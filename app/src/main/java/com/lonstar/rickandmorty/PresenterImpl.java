@@ -1,5 +1,7 @@
 package com.lonstar.rickandmorty;
 
+import android.util.Log;
+
 import com.lonstar.rickandmorty.pojo.CharacterRAM;
 
 import retrofit2.Call;
@@ -22,6 +24,7 @@ public class PresenterImpl implements Contract.IPresenter {
             @Override
             public void onResponse(Call<CharacterRAM> call, Response<CharacterRAM> response) {
                 CharacterRAM character = response.body();
+                Log.e(Const.TAG, "onResponse: " + response.body());
                 mView.onShowCharacter(character.getName(), character.getStatus(), character.getSpecies(),
                         character.getType(), character.getGender(), character.getOrigin(),
                         character.getLocation(), character.getImage());
@@ -29,7 +32,7 @@ public class PresenterImpl implements Contract.IPresenter {
 
             @Override
             public void onFailure(Call<CharacterRAM> call, Throwable t) {
-
+                Log.e(Const.TAG, "onFailure: " + t.getMessage());
             }
         });
     }

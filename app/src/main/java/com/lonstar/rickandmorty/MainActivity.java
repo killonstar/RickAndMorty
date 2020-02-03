@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lonstar.rickandmorty.pojo.CharacterRAM;
 import com.lonstar.rickandmorty.pojo.Location;
 import com.lonstar.rickandmorty.pojo.Origin;
 
@@ -12,6 +13,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
 
 public class MainActivity extends BaseApp implements Contract.IView{
 
@@ -39,7 +41,7 @@ public class MainActivity extends BaseApp implements Contract.IView{
     PresenterImpl mPresenter;
 
     public MainActivity() {
-        mPresenter = new PresenterImpl(this, mService);
+
     }
 
     @Override
@@ -48,6 +50,8 @@ public class MainActivity extends BaseApp implements Contract.IView{
         setContentView(R.layout.activity_main);
         getNetworkComponent().inject(this);
         ButterKnife.bind(this);
+
+        mPresenter = new PresenterImpl(this, mService);
 
         mButtonNext.setOnClickListener(v -> {
             mPresenter.onClick();
