@@ -1,16 +1,19 @@
 package com.lonstar.rickandmorty;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.lonstar.rickandmorty.pojo.Location;
+import com.lonstar.rickandmorty.pojo.Origin;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements Contract.IView{
+public class MainActivity extends BaseApp implements Contract.IView{
 
     @BindView(R.id.iv_face_character)
     ImageView mImageViewFaceCharacter;
@@ -26,12 +29,41 @@ public class MainActivity extends AppCompatActivity implements Contract.IView{
     TextView mTextViewOrigin;
     @BindView(R.id.tv_last_location)
     TextView mTextViewLastLocation;
+    @BindView(R.id.btn_next)
+    Button mButtonNext;
+    @BindView(R.id.btn_prev)
+    Button mButtonPrev;
+
+    @Inject
+    NetworkService mService;
+    PresenterImpl mPresenter;
+
+    public MainActivity() {
+        mPresenter = new PresenterImpl(this, mService);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getNetworkComponent().inject(this);
         ButterKnife.bind(this);
 
+        mButtonNext.setOnClickListener(v -> {
+            mPresenter.onClick();
+        });
+
+    }
+
+    @Override
+    public void onShowCharacter(String name, String status, String species,
+                                String type, String gender, Origin origin,
+                                Location location, String image) {
+        mTextViewName.setText(name);
+        mTextViewStatus.setText(status);
+        mTextViewSpecies.setText(species);
+        mTextViewGender.setText(gender);
+        mTextViewOrigin.setText(origin.getName());
+        mTextViewLastLocation.setText(location.getName());
     }
 }
