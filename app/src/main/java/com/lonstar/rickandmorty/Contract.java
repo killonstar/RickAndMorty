@@ -12,10 +12,6 @@ public interface Contract {
     }
 
     interface IPresenter {
-        void onClick();
-    }
-
-    interface IModel {
-
+        void onClick(int button);
     }
 }

@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@android:color/darker_gray"
-    tools:context=".MainActivity">
-
     <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/rectangle_rounded_all"
-        android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/container">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="16dp"/>
+        android:background="@color/colorBackgroundItem"
+        tools:context=".MainActivity">
 
         <ImageView
             android:id="@+id/iv_face_character"
             android:layout_width="300dp"
             android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
             android:scaleType="centerInside"
-            android:src="@drawable/morty" />
+            />
 
         <TextView
             android:id="@+id/tv_name"
@@ -34,7 +25,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="casual"
-            android:text="Morty"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="32sp" />
@@ -99,7 +89,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="STATUS"
                     android:textAlignment="textEnd"
                     android:textColor="@color/colorTextItem" />
 
@@ -108,7 +97,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="STATUS"
                     android:textAlignment="textEnd"
                     android:textColor="@color/colorTextItem" />
 
@@ -117,7 +105,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="STATUS"
                     android:textAlignment="textEnd"
                     android:textColor="@color/colorTextItem" />
 
@@ -126,8 +113,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="STATUS"
                     android:textAlignment="textEnd"
+                    android:lines="1"
                     android:textColor="@color/colorTextItem" />
 
                 <TextView
@@ -135,46 +122,44 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="STATUS"
                     android:textAlignment="textEnd"
+                    android:lines="1"
                     android:textColor="@color/colorTextItem" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
-
     <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/container"
-        android:layout_marginTop="8dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_prev"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_rounded_all"
-            android:layout_weight="1"
-            android:padding="8dp"
             android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_rounded_all"
+            android:padding="8dp"
             android:text="Prev"
-            android:textColor="@android:color/white"/>
+            android:layout_gravity="bottom"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/btn_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_rounded_all"
-            android:layout_weight="1"
-            android:padding="8dp"
             android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_rounded_all"
+            android:padding="8dp"
             android:text="Next"
-            android:textColor="@android:color/white"/>
+            android:layout_gravity="bottom"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

@@ -22,13 +22,13 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    JSONPlaceHolderApi provideHolderApi(Retrofit retrofit) {
-        return retrofit.create(JSONPlaceHolderApi.class);
+    JsonPlaceHolderApi provideHolderApi(Retrofit retrofit) {
+        return retrofit.create(JsonPlaceHolderApi.class);
     }
 
     @Provides
     @Singleton
-    NetworkService provideNetworkService(JSONPlaceHolderApi holderApi) {
+    NetworkService provideNetworkService(JsonPlaceHolderApi holderApi) {
         return new NetworkService(holderApi);
     }
 

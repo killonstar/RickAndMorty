@@ -5,15 +5,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.lonstar.rickandmorty.pojo.CharacterRAM;
 import com.lonstar.rickandmorty.pojo.Location;
 import com.lonstar.rickandmorty.pojo.Origin;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
 
 public class MainActivity extends BaseApp implements Contract.IView{
 
@@ -51,12 +50,11 @@ public class MainActivity extends BaseApp implements Contract.IView{
         getNetworkComponent().inject(this);
         ButterKnife.bind(this);
 
+        // Quick solution
         mPresenter = new PresenterImpl(this, mService);
 
-        mButtonNext.setOnClickListener(v -> {
-            mPresenter.onClick();
-        });
-
+        mButtonNext.setOnClickListener(v -> mPresenter.onClick(0));
+        mButtonPrev.setOnClickListener(v -> mPresenter.onClick(1));
     }
 
     @Override
@@ -69,5 +67,7 @@ public class MainActivity extends BaseApp implements Contract.IView{
         mTextViewGender.setText(gender);
         mTextViewOrigin.setText(origin.getName());
         mTextViewLastLocation.setText(location.getName());
+        // Quick solution
+        Picasso.get().load(image).fit().into(mImageViewFaceCharacter);
     }
 }

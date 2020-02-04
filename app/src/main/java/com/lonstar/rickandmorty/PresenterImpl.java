@@ -13,14 +13,24 @@ public class PresenterImpl implements Contract.IPresenter {
     Contract.IView mView;
     NetworkService mService;
 
+    int i = 0;
+
     public PresenterImpl(Contract.IView view, NetworkService service) {
         mView = view;
         mService = service;
     }
 
     @Override
-    public void onClick() {
-        mService.holderApi.getCharacterWithId(1).enqueue(new Callback<CharacterRAM>() {
+    public void onClick(int button) {
+        if(button == 0) {
+            i++;
+        } else {
+            i--;
+        }
+        if(i <= 0) {
+            i = 1;
+        }
+        mService.holderApi.getCharacterWithId(i).enqueue(new Callback<CharacterRAM>() {
             @Override
             public void onResponse(Call<CharacterRAM> call, Response<CharacterRAM> response) {
                 CharacterRAM character = response.body();
