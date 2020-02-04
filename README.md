@@ -10,4 +10,3 @@ Pet-проект в котором можно ознакомиться с пер
 * [Retrofit 2](https://square.github.io/retrofit/) - A type-safe HTTP client for Android and Java
 * [ButterKnife](https://jakewharton.github.io/butterknife/) - Field and method binding for Android views
 * [Picasso](https://square.github.io/picasso/) - A powerful image downloading and caching library for Android
-* [RxJava2 (in process)](https://github.com/ReactiveX/RxJava) - A library for composing asynchronous and event-based programs using observable sequences for the Java VM.
